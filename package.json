@@ -1,0 +1,16 @@
+{
+  "name": "security"
+, "description": "Utility methods for escaping according to OWASP."
+, "keywords": ["security", "OWASP", "encoding", "escaping"]
+, "author": {
+		"name": "Chad Weider"
+	, "email": "cweider@oofn.net"
+	, "url": "http://oofn.net"
+  }
+, "dependencies": {}
+, "version": "1.0.0"
+, "repository": {
+    "type": "git"
+	, "url": "git://github.com/cweider/js-security"
+  }
+}
