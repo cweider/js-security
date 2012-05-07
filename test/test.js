@@ -12,7 +12,7 @@ describe("escapeHTML", function () {
 
 describe("escapeHTMLAttribute", function () {
   it('should work', function () {
-    assert.equal(Security.escapeHTMLAttribute("\n\t"), "&#x0a;&#x09;");
+    assert.equal(Security.escapeHTMLAttribute("\n\t\""), "&#x0a;&#x09;&quot;");
     assert.equal(Security.escapeHTMLAttribute(
       "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789")
     , "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789");

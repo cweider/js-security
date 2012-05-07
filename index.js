@@ -20,7 +20,7 @@ var HTML_ATTRIBUTE_CHARACTERS_EXPRESSION =
     /[\x00-\x2F\x3A-\x40\x5B-\x60\x7B-\xFF]/gm;
 function escapeHTMLAttribute(text) {
   return text && text.replace(HTML_ATTRIBUTE_CHARACTERS_EXPRESSION, function (c) {
-    return "&#x" + ('00' + c.charCodeAt(0).toString(16)).slice(-2) + ";";
+    return HTML_ENTITY_MAP[c] || "&#x" + ('00' + c.charCodeAt(0).toString(16)).slice(-2) + ";";
   });
 };
 
