@@ -33,3 +33,12 @@ describe("encodeJavaScriptData", function () {
     assert.equal(Security.encodeJavaScriptData({"Funny\nKey": ["Funny\nValue"]}), "{\"Funny\\u000aKey\":[\"Funny\\u000aValue\"]}");
   });
 });
+
+describe("encodeCSSString", function () {
+  it('should work', function () {
+    assert.equal(Security.encodeCSSString("\n\t\""), "\"\\00000a\\000009\\000022\"");
+    assert.equal(Security.encodeCSSString(
+      "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789")
+    , "\"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789\"");
+  });
+});

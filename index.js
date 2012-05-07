@@ -46,9 +46,26 @@ function encodeJavaScriptData(object) {
   });
 }
 
+
+// OSWASP Guidlines: escape all non alphanumeric characters in ASCII space.
+var CSS_CHARACTERS_EXPRESSION =
+    /[\x00-\x2F\x3A-\x40\x5B-\x60\x7B-\xFF]/gm;
+function encodeCSSIdentifier(text) {
+  return text && text.replace(CSS_CHARACTERS_EXPRESSION, function (c) {
+    return "\\" + ('000000' + c.charCodeAt(0).toString(16)).slice(-6);
+  });
+}
+
+function encodeCSSString(text) {
+  return text && '"' + encodeCSSIdentifier(text) + '"';
+}
+
 exports.escapeHTML = escapeHTML;
 exports.escapeHTMLAttribute = escapeHTMLAttribute;
 
 exports.encodeJavaScriptIdentifier = encodeJavaScriptIdentifier;
 exports.encodeJavaScriptString = encodeJavaScriptString;
 exports.encodeJavaScriptData = encodeJavaScriptData;
+
+exports.encodeCSSIdentifier = encodeCSSIdentifier;
+exports.encodeCSSString = encodeCSSString;
